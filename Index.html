@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Director of Engineering</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+    .timeline-line { background: linear-gradient(to bottom, #3b82f6, #64748b); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold">Your Name</a>
+      <div class="flex gap-8 text-sm">
+        <a href="#experience" class="hover:text-blue-400 transition">Journey</a>
+        <a href="#tech" class="hover:text-blue-400 transition">Tech Stack</a>
+        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+        <a href="#interests" class="hover:text-blue-400 transition">Interests</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-bg py-24 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-5xl font-bold mb-4">Your Full Name</h1>
+      <p class="text-2xl text-blue-300 mb-6">Director of Engineering</p>
+      <p class="text-lg text-zinc-300">
+        26+ years driving software excellence — from C/C++ Networking engineer to leading high-performing engineering organizations.
+      </p>
+      <div class="mt-10 flex justify-center gap-4">
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-medium transition">Get In Touch</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="border border-zinc-400 hover:border-white px-8 py-3 rounded-full font-medium transition">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="py-20 bg-zinc-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-8">About Me</h2>
+      <p class="text-lg text-zinc-300 max-w-3xl">
+        Started as a C/C++ developer specializing in Networking. Progressed through Project Manager, Technical Manager, Engineering Manager, and now Director of Engineering roles. 
+        Deep expertise in building scalable systems, leading digital transformations with Cloud and AI/GenAI technologies, and mentoring engineering leaders.
+      </p>
+    </div>
+  </section>
+
+  <!-- Professional Journey Timeline -->
+  <section id="experience" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-12">
+        <h2 class="text-3xl font-bold">Professional Journey (26+ Years)</h2>
+        <a href="resume.pdf" target="_blank"
+           class="flex items-center gap-2 bg-white text-zinc-900 px-6 py-3 rounded-full font-medium hover:bg-zinc-200 transition">
+          <i class="fas fa-download"></i>
+          Download Full Resume (PDF)
+        </a>
+      </div>
+
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Vertical Timeline Line -->
+        <div class="absolute left-6 md:left-1/2 top-8 bottom-8 w-0.5 timeline-line"></div>
+
+        <!-- Timeline Item 1 -->
+        <div class="relative mb-16">
+          <div class="flex flex-col md:flex-row gap-8 md:items-center">
+            <div class="md:w-5/12 md:text-right">
+              <div class="inline-flex items-center gap-2 bg-zinc-800 px-5 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                2022 – Present
+              </div>
+              <p class="mt-3 font-semibold text-lg">Company Name</p>
+              <p class="text-blue-400">Director of Engineering</p>
+            </div>
+            <div class="absolute left-4 md:left-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-zinc-950 flex items-center justify-center">
+              <i class="fas fa-arrow-trend-up text-white text-xs"></i>
+            </div>
+            <div class="md:w-5/12 md:pl-12">
+              <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Lead 50+ engineers across multiple locations</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Drove Cloud-native & GenAI / RAG initiatives</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Built strong engineering culture and leadership bench</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative mb-16">
+          <div class="flex flex-col md:flex-row gap-8 md:items-center">
+            <div class="md:w-5/12 md:text-right">
+              <div class="inline-flex items-center gap-2 bg-zinc-800 px-5 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                2018 – 2022
+              </div>
+              <p class="mt-3 font-semibold text-lg">Company Name</p>
+              <p class="text-blue-400">Engineering Manager</p>
+            </div>
+            <div class="absolute left-4 md:left-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-zinc-950 flex items-center justify-center">
+              <i class="fas fa-users text-white text-xs"></i>
+            </div>
+            <div class="md:w-5/12 md:pl-12">
+              <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Managed multiple engineering teams (20-30 engineers)</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Led migration to Kubernetes & Cloud platforms (AWS/Azure/GCP)</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Mentored Technical Managers and improved delivery velocity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more entries below (Technical Manager, Project Manager, Senior Developer, etc.) -->
+        <!-- Example for earlier career (make them slightly more compact) -->
+
+        <div class="relative mb-16">
+          <div class="flex flex-col md:flex-row gap-8 md:items-center">
+            <div class="md:w-5/12 md:text-right">
+              <div class="inline-flex items-center gap-2 bg-zinc-800 px-5 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                2012 – 2018
+              </div>
+              <p class="mt-3 font-semibold text-lg">Company Name</p>
+              <p class="text-blue-400">Technical Manager / Project Manager</p>
+            </div>
+            <div class="absolute left-4 md:left-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-zinc-950 flex items-center justify-center">
+              <i class="fas fa-cogs text-white text-xs"></i>
+            </div>
+            <div class="md:w-5/12 md:pl-12">
+              <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Delivered large-scale networking and distributed systems projects</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Transitioned teams to Agile and modern development practices</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mb-16">
+          <div class="flex flex-col md:flex-row gap-8 md:items-center">
+            <div class="md:w-5/12 md:text-right">
+              <div class="inline-flex items-center gap-2 bg-zinc-800 px-5 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                2005 – 2012
+              </div>
+              <p class="mt-3 font-semibold text-lg">Company Name</p>
+              <p class="text-blue-400">Senior Software Engineer (C/C++)</p>
+            </div>
+            <div class="absolute left-4 md:left-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-zinc-950 flex items-center justify-center">
+              <i class="fas fa-code text-white text-xs"></i>
+            </div>
+            <div class="md:w-5/12 md:pl-12">
+              <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Developed high-performance networking applications in C/C++</li>
+                <li class="flex gap-3"><span class="text-emerald-400">→</span> Built foundational expertise in protocols and low-level systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earliest role -->
+        <div class="relative">
+          <div class="flex flex-col md:flex-row gap-8 md:items-center">
+            <div class="md:w-5/12 md:text-right">
+              <div class="inline-flex items-center gap-2 bg-zinc-800 px-5 py-2 rounded-full text-sm font-medium">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                1998 – 2005
+              </div>
+              <p class="mt-3 font-semibold text-lg">Company Name</p>
+              <p class="text-blue-400">Software Developer (C/C++ Networking)</p>
+            </div>
+            <div class="absolute left-4 md:left-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-zinc-950 flex items-center justify-center">
+              <i class="fas fa-laptop-code text-white text-xs"></i>
+            </div>
+            <div class="md:w-5/12 md:pl-12">
+              <p class="text-zinc-300">Began career building core networking software and protocols.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="tech" class="py-20 bg-zinc-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12">Technologies & Expertise</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="bg-zinc-800 p-6 rounded-2xl">
+          <h3 class="font-semibold mb-4 text-blue-400">Languages & Frameworks</h3>
+          <p class="text-zinc-400">C/C++, Go, JavaScript, React, Angular, Vue, Python</p>
+        </div>
+        <div class="bg-zinc-800 p-6 rounded-2xl">
+          <h3 class="font-semibold mb-4 text-blue-400">Cloud & Infrastructure</h3>
+          <p class="text-zinc-400">AWS, Azure, GCP, Docker, Kubernetes, Terraform</p>
+        </div>
+        <div class="bg-zinc-800 p-6 rounded-2xl">
+          <h3 class="font-semibold mb-4 text-blue-400">AI / Modern Tech</h3>
+          <p class="text-zinc-400">Generative AI, RAG, LLMs, Machine Learning</p>
+        </div>
+        <div class="bg-zinc-800 p-6 rounded-2xl">
+          <h3 class="font-semibold mb-4 text-blue-400">Networking & Others</h3>
+          <p class="text-zinc-400">Networking Protocols, Distributed Systems, Microservices</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12">Key Projects & Impact</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Add your project cards here -->
+        <div class="bg-zinc-800 p-8 rounded-3xl">
+          <h3 class="text-xl font-semibold mb-3">Project Name 1</h3>
+          <p class="text-zinc-400 mb-6">Short description highlighting business impact and technologies used.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-zinc-700 px-3 py-1 rounded-full">Kubernetes</span>
+            <span class="text-xs bg-zinc-700 px-3 py-1 rounded-full">GenAI</span>
+          </div>
+        </div>
+        <!-- Repeat for more projects -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section id="interests" class="py-20 bg-zinc-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-8">Interests & Beyond Work</h2>
+      <p class="text-zinc-400 max-w-2xl">Mentoring upcoming leaders • Reading about technology & leadership • Open source contributions • [Add your hobbies]</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8">Let's Connect</h2>
+      <p class="text-lg text-zinc-400 mb-10">Open to conversations on leadership, technology strategy, or potential opportunities.</p>
+      <a href="mailto:your@email.com" class="inline-block bg-white text-zinc-900 px-10 py-4 rounded-full font-semibold hover:bg-zinc-200 transition">Send Email</a>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-zinc-500 text-sm border-t border-zinc-800">
+    © 2026 Your Name. All rights reserved.
+  </footer>
+
+  <script>
+    // Optional: Tailwind script already included via CDN
+  </script>
