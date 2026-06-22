@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects & Impact | Sudhakar Shenoy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-base:     #030d1a;
+      --bg-surface:  #0b1929;
+      --bg-card:     #0e2038;
+      --blue-bright: #3b82f6;
+      --blue-glow:   #60a5fa;
+      --indigo:      #6366f1;
+      --emerald:     #10b981;
+      --amber:       #f59e0b;
+      --text-pri:    #e2eaf4;
+      --text-sec:    #8faac4;
+      --border:      rgba(99,149,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-pri);
+      overflow-x: hidden;
+    }
+    h1,h2,h3 { font-family: 'Syne','Plus Jakarta Sans',sans-serif; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: #1e4070; border-radius: 3px; }
+
+    .nav-glass {
+      background: rgba(3,13,26,0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-link {
+      color: var(--text-sec);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #fff; }
+
+    .grad-text {
+      background: linear-gradient(135deg, var(--blue-glow) 0%, var(--indigo) 60%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-projects {
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 40%, rgba(59,130,246,0.15) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(99,102,241,0.12) 0%, transparent 60%),
+        var(--bg-base);
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.25);
+      color: var(--blue-glow);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .glass-card {
+      background: rgba(14,32,56,0.65);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .glass-card:hover {
+      border-color: rgba(99,149,255,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.28rem 0.7rem;
+      border-radius: 0.45rem;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.18);
+      color: #93c5fd;
+      transition: background 0.2s;
+    }
+    .tech-badge:hover { background: rgba(59,130,246,0.18); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      padding: 0.7rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: var(--text-pri);
+      padding: 0.7rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: border-color 0.2s, background 0.2s;
+      background: rgba(255,255,255,0.04);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+      max-width: 60%;
+    }
+    .section-alt { background: var(--bg-surface); }
+
+    /* Filter tabs */
+    .filter-tab {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      color: var(--text-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .filter-tab:hover { border-color: rgba(99,149,255,0.4); color: #fff; }
+    .filter-tab.active {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+    }
+
+    /* Project detail card */
+    .project-card { border-radius: 1.5rem; overflow: hidden; }
+
+    .impact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+    }
+    .impact-chip.green  { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .impact-chip.blue   { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .impact-chip.amber  { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .impact-chip.purple { background: rgba(139,92,246,0.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.25); }
+
+    /* Category icon bg */
+    .cat-ai     { background: rgba(16,185,129,0.15); color: #34d399; }
+    .cat-cloud  { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+    .cat-sec    { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .cat-lead   { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .cat-net    { background: rgba(59,130,246,0.15); color: #93c5fd; }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .delay-1 { transition-delay:0.1s; }
+    .delay-2 { transition-delay:0.2s; }
+    .delay-3 { transition-delay:0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav-glass sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="Index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">SS</div>
+        <span class="font-bold text-lg tracking-tight">Sudhakar Shenoy</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="Index.html" class="nav-link"><i class="fas fa-arrow-left mr-1.5"></i>Back to Profile</a>
+        <a href="Index.html#contact" class="btn-primary" style="padding:0.5rem 1.4rem; font-size:0.85rem;">Let's Talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-projects pt-24 pb-16 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="section-badge reveal"><i class="fas fa-trophy"></i> Portfolio</div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 reveal delay-1">
+        Projects &amp; <span class="grad-text">Impact</span>
+      </h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto reveal delay-2">
+        A curated look at the products, platforms, and transformations built across 26+ years —
+        from low-level networking software to enterprise AI systems.
+      </p>
+
+      <!-- Stats -->
+      <div class="flex flex-wrap justify-center gap-8 mt-10 reveal delay-3">
+        <div class="text-center">
+          <p class="text-3xl font-bold grad-text">10+</p>
+          <p class="text-sm text-slate-400 mt-1">Major Projects</p>
+        </div>
+        <div class="w-px bg-slate-800 self-stretch"></div>
+        <div class="text-center">
+          <p class="text-3xl font-bold grad-text">5</p>
+          <p class="text-sm text-slate-400 mt-1">Companies</p>
+        </div>
+        <div class="w-px bg-slate-800 self-stretch"></div>
+        <div class="text-center">
+          <p class="text-3xl font-bold grad-text">26+</p>
+          <p class="text-sm text-slate-400 mt-1">Years Span</p>
+        </div>
+        <div class="w-px bg-slate-800 self-stretch"></div>
+        <div class="text-center">
+          <p class="text-3xl font-bold" style="background:linear-gradient(135deg,#f59e0b,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">3</p>
+          <p class="text-sm text-slate-400 mt-1">Domains</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-divider"></div>
+
+  <!-- FILTER TABS -->
+  <section class="py-10 section-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-wrap gap-3 justify-center" id="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Projects</button>
+        <button class="filter-tab" data-filter="ai">AI / GenAI</button>
+        <button class="filter-tab" data-filter="cloud">Cloud &amp; Infra</button>
+        <button class="filter-tab" data-filter="security">Security</button>
+        <button class="filter-tab" data-filter="leadership">Leadership</button>
+        <button class="filter-tab" data-filter="networking">Networking</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section class="py-16 section-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-7" id="projects-grid">
+
+        <!-- ── Project 1: GenAI RAG Platform ── -->
+        <div class="glass-card project-card p-7 reveal" data-category="ai">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-ai flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1 block">AI / GenAI</span>
+                <h3 class="text-xl font-bold leading-tight">Enterprise GenAI / RAG Platform</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2022–2024</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Architected and led end-to-end delivery of a Retrieval-Augmented Generation platform enabling enterprise clients to query internal knowledge bases using large language models. Built the team, defined the architecture, and drove adoption across 5+ enterprise customers.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Designed vector indexing pipeline ingesting 2M+ documents with sub-second query latency</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Integrated multiple LLM providers (OpenAI, Anthropic, Llama) behind a unified API gateway</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Delivered hallucination-reduction pipeline with contextual grounding and citation tracking</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Grew the AI team from 3 to 12 engineers in 18 months</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip green"><i class="fas fa-arrow-up"></i>70% faster retrieval</span>
+            <span class="impact-chip blue"><i class="fas fa-users"></i>5+ enterprise clients</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">LangChain</span>
+            <span class="tech-badge">OpenAI</span>
+            <span class="tech-badge">Pinecone</span>
+            <span class="tech-badge">AWS</span>
+            <span class="tech-badge">FastAPI</span>
+            <span class="tech-badge">React</span>
+          </div>
+        </div>
+
+        <!-- ── Project 2: Cloud Migration ── -->
+        <div class="glass-card project-card p-7 reveal delay-1" data-category="cloud">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-cloud flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1 block">Cloud &amp; Infra</span>
+                <h3 class="text-xl font-bold leading-tight">Large-Scale Cloud Migration &amp; Modernization</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2017–2019</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Led the end-to-end migration of a 15-year-old monolithic on-premise platform to cloud-native microservices on Kubernetes. Managed a 25-engineer team across 3 time zones, coordinating with DevOps, QA, and business stakeholders through zero-downtime cutover.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Decomposed a 1.2M LOC monolith into 40+ Kubernetes microservices</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Established CI/CD pipelines reducing release cycle from 6 weeks to 2 days</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Implemented GitOps with ArgoCD for declarative, auditable deployments</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Achieved zero-downtime production cutover serving 500K+ users</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip green"><i class="fas fa-arrow-down"></i>40% cost reduction</span>
+            <span class="impact-chip blue"><i class="fas fa-rocket"></i>5× faster deploys</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">Kubernetes</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">ArgoCD</span>
+            <span class="tech-badge">Terraform</span>
+            <span class="tech-badge">AWS</span>
+            <span class="tech-badge">Azure</span>
+            <span class="tech-badge">Helm</span>
+          </div>
+        </div>
+
+        <!-- ── Project 3: Engineering Culture Transformation ── -->
+        <div class="glass-card project-card p-7 reveal delay-2" data-category="leadership">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-lead flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-people-roof"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-1 block">Leadership</span>
+                <h3 class="text-xl font-bold leading-tight">Engineering Culture &amp; Org Transformation</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2020–Present</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Built Proxima Systems' engineering organization from the ground up — establishing engineering practices, career ladders, OKR-driven goal frameworks, learning programs, and a culture of psychological safety and ownership that scaled from 15 to 50+ engineers.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Defined 5-level engineering career ladder with transparent promotion criteria</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Launched bi-annual engineering summit to share learnings across teams</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Instituted structured mentoring pairing 30+ junior engineers with senior leaders</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Implemented DORA metrics tracking; moved to Elite/High performer tiers</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip purple"><i class="fas fa-arrow-down"></i>30% attrition drop</span>
+            <span class="impact-chip blue"><i class="fas fa-chart-line"></i>15 → 50+ engineers</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">OKRs</span>
+            <span class="tech-badge">DORA Metrics</span>
+            <span class="tech-badge">Agile / Scrum</span>
+            <span class="tech-badge">Career Ladders</span>
+            <span class="tech-badge">Mentoring</span>
+          </div>
+        </div>
+
+        <!-- ── Project 4: SpectraGuard WiFi Security ── -->
+        <div class="glass-card project-card p-7 reveal delay-3" data-category="security">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-sec flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-1 block">Security</span>
+                <h3 class="text-xl font-bold leading-tight">SpectraGuard — WiFi WIPS Platform</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2005–2006</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Core developer of SpectraGuard, AirTight Networks' flagship Wireless Intrusion Prevention System. Built real-time packet capture and analysis engine in C/C++ capable of detecting rogue APs, man-in-the-middle attacks, and policy violations across 802.11a/b/g networks.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Engineered packet analysis engine processing 10K+ frames/sec with &lt;5ms latency</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Implemented rogue AP detection using RF fingerprinting algorithms</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Built automated containment using IEEE 802.11 deauth frame injection</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Product shipped to Fortune 500 customers across US and Europe</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip amber"><i class="fas fa-globe"></i>Fortune 500 customers</span>
+            <span class="impact-chip green"><i class="fas fa-bolt"></i>&lt;5ms latency</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">C / C++</span>
+            <span class="tech-badge">802.11 Protocols</span>
+            <span class="tech-badge">RF Analysis</span>
+            <span class="tech-badge">Linux Kernel</span>
+            <span class="tech-badge">libpcap</span>
+          </div>
+        </div>
+
+        <!-- ── Project 5: FlameThrower Networking ── -->
+        <div class="glass-card project-card p-7 reveal" data-category="networking">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-net flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-fire-flame-curved"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-1 block">Networking</span>
+                <h3 class="text-xl font-bold leading-tight">FlameThrower — Network Management System</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2000–2003</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Key developer for FlameThrower, ControlNet's core network management product. Built the protocol stack and device management layer that became the foundation for subsequent product lines. Established early career deep expertise in low-level systems and network protocol engineering.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Implemented TCP/IP stack extensions and custom routing protocol handlers</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Built SNMP-based device monitoring and configuration management layer</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Designed fault-tolerant event processing pipeline for network topology changes</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip blue"><i class="fas fa-server"></i>Core product platform</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">C / C++</span>
+            <span class="tech-badge">TCP/IP</span>
+            <span class="tech-badge">SNMP</span>
+            <span class="tech-badge">Network Protocols</span>
+            <span class="tech-badge">Embedded Linux</span>
+          </div>
+        </div>
+
+        <!-- ── Project 6: Distributed Systems at Persistent ── -->
+        <div class="glass-card project-card p-7 reveal delay-1" data-category="cloud">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-cloud flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-diagram-project"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1 block">Cloud &amp; Infra</span>
+                <h3 class="text-xl font-bold leading-tight">Distributed Storage Platform</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2010–2014</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Technical Manager for a distributed storage platform project at Persistent Systems, working with a US-based storage company. Led a 15-engineer team building a petabyte-scale data management layer with multi-site replication and automated tiering.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Built a multi-site replication engine with conflict resolution for petabyte-scale data</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Designed automated tiering policy engine reducing hot-tier storage costs by 35%</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Led Agile transformation for the team, improving sprint predictability from 62% to 91%</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip green"><i class="fas fa-arrow-down"></i>35% storage cost savings</span>
+            <span class="impact-chip blue"><i class="fas fa-database"></i>Petabyte scale</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">C / C++</span>
+            <span class="tech-badge">Go</span>
+            <span class="tech-badge">Distributed Systems</span>
+            <span class="tech-badge">Replication</span>
+            <span class="tech-badge">Agile</span>
+          </div>
+        </div>
+
+        <!-- ── Project 7: AI-Powered DevOps Platform ── -->
+        <div class="glass-card project-card p-7 reveal delay-2" data-category="ai">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-ai flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-gears"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-1 block">AI / GenAI</span>
+                <h3 class="text-xl font-bold leading-tight">AI-Powered Developer Productivity Platform</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2023–Present</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Initiated and oversaw an internal AI-assisted developer tooling initiative — integrating LLM-based code review, automated PR summarization, test generation, and incident root-cause analysis into the engineering workflow.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>LLM-powered PR review assistant cutting review cycle time by 40%</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>AI-generated test stubs with 70% acceptance rate by engineers</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Incident RCA assistant reducing MTTR by 25% in the first 6 months</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip green"><i class="fas fa-clock"></i>40% faster reviews</span>
+            <span class="impact-chip blue"><i class="fas fa-bug"></i>25% lower MTTR</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">LLMs</span>
+            <span class="tech-badge">GitHub Actions</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">OpenAI API</span>
+            <span class="tech-badge">Jira</span>
+          </div>
+        </div>
+
+        <!-- ── Project 8: Agile Transformation ── -->
+        <div class="glass-card project-card p-7 reveal delay-3" data-category="leadership">
+          <div class="flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl cat-lead flex items-center justify-center flex-shrink-0 text-xl">
+                <i class="fas fa-arrows-spin"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-1 block">Leadership</span>
+                <h3 class="text-xl font-bold leading-tight">Agile Transformation at Scale</h3>
+              </div>
+            </div>
+            <span class="tech-badge flex-shrink-0">2012–2016</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Drove Agile transformation across 4 engineering teams (60+ engineers) at Persistent Systems. Moved from waterfall delivery with unpredictable 6-month releases to 2-week sprint cadences with continuous integration and measurable quality gates.
+          </p>
+          <div class="border-t border-slate-800 pt-4 mb-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Key Highlights</h4>
+            <ul class="space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Rolled out Scrum and Kanban practices tailored to each team's context</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Introduced continuous integration, reducing integration defects by 60%</li>
+              <li class="flex gap-2"><i class="fas fa-check-circle text-emerald-400 mt-0.5 flex-shrink-0"></i>Trained 8 Scrum Masters and 3 Agile coaches in-house</li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="impact-chip purple"><i class="fas fa-arrow-down"></i>60% fewer integration defects</span>
+            <span class="impact-chip amber"><i class="fas fa-users"></i>60+ engineers</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge">Scrum</span>
+            <span class="tech-badge">Kanban</span>
+            <span class="tech-badge">CI/CD</span>
+            <span class="tech-badge">Jenkins</span>
+            <span class="tech-badge">Jira</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- BACK TO PROFILE CTA -->
+  <section class="py-16 text-center">
+    <div class="max-w-xl mx-auto px-6 reveal">
+      <p class="text-slate-400 mb-6">Want to discuss any of these projects or explore how similar approaches could work for your organization?</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="Index.html#contact" class="btn-primary"><i class="fas fa-envelope"></i>Get In Touch</a>
+        <a href="Index.html" class="btn-outline"><i class="fas fa-arrow-left"></i>Back to Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t py-8 text-center text-sm text-slate-500" style="border-color:var(--border); background:var(--bg-surface);">
+    <p>© 2026 Sudhakar Subraya Shenoy · <a href="Index.html" class="hover:text-slate-300 transition">Profile</a> · <a href="Index.html#contact" class="hover:text-slate-300 transition">Contact</a></p>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Filter tabs
+    const tabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('#projects-grid > div[data-category]');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
