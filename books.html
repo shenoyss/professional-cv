@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading List | Sudhakar Shenoy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-base:     #030d1a;
+      --bg-surface:  #0b1929;
+      --bg-card:     #0e2038;
+      --blue-bright: #3b82f6;
+      --blue-glow:   #60a5fa;
+      --indigo:      #6366f1;
+      --emerald:     #10b981;
+      --amber:       #f59e0b;
+      --text-pri:    #e2eaf4;
+      --text-sec:    #8faac4;
+      --text-muted:  #4d6480;
+      --border:      rgba(99,149,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-pri);
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'Syne', 'Plus Jakarta Sans', sans-serif; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: #1e4070; border-radius: 3px; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .nav-glass {
+      background: rgba(3,13,26,0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-link {
+      color: var(--text-sec);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #fff; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(59,130,246,0.5); }
+
+    .hero-books {
+      background:
+        radial-gradient(ellipse 60% 60% at 20% 50%, rgba(99,102,241,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(59,130,246,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 90%, rgba(139,92,246,0.08) 0%, transparent 60%),
+        var(--bg-base);
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      color: #a78bfa;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .grad-text {
+      background: linear-gradient(135deg, var(--blue-glow) 0%, var(--indigo) 60%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass-card {
+      background: rgba(14,32,56,0.6);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .glass-card:hover {
+      border-color: rgba(99,149,255,0.32);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.08);
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.45rem;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.18);
+      color: #93c5fd;
+    }
+
+    .genre-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.65rem;
+      border-radius: 9999px;
+    }
+    .genre-tech    { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .genre-biz     { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .genre-finance { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .genre-history { background: rgba(168,85,247,0.12); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.25); }
+    .genre-fiction { background: rgba(236,72,153,0.12); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.25); }
+    .genre-self    { background: rgba(20,184,166,0.12); color: #5eead4; border: 1px solid rgba(20,184,166,0.25); }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+      max-width: 60%;
+    }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    .reading-now-ring {
+      position: relative;
+    }
+    .reading-now-ring::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #6366f1, #3b82f6, #a78bfa);
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(4px);
+    }
+
+    .section-alt { background: rgba(11,25,41,0.5); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav-glass sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="Index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">SS</div>
+        <span class="font-bold text-lg tracking-tight">Sudhakar Shenoy</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="Index.html" class="nav-link"><i class="fas fa-arrow-left mr-1.5"></i>Back to Profile</a>
+        <a href="Index.html#contact" class="btn-primary" style="padding:0.5rem 1.4rem; font-size:0.85rem;">Let's Talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-books pt-24 pb-16 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+      <div class="section-badge reveal"><i class="fas fa-book-open"></i> Reading List</div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 reveal delay-1">
+        Books &amp; <span class="grad-text">Learnings</span>
+      </h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto reveal delay-2">
+        Reading across technical, business, finance, history, and fiction — always learning, always curious.
+      </p>
+      <div class="flex flex-wrap justify-center gap-8 mt-10 reveal delay-3">
+        <div class="text-center">
+          <p class="text-3xl font-bold grad-text">3</p>
+          <p class="text-sm text-slate-400 mt-1">Currently Reading</p>
+        </div>
+        <div class="w-px bg-slate-800 self-stretch"></div>
+        <div class="text-center">
+          <p class="text-3xl font-bold grad-text">6</p>
+          <p class="text-sm text-slate-400 mt-1">Past Reads</p>
+        </div>
+        <div class="w-px bg-slate-800 self-stretch"></div>
+        <div class="text-center">
+          <p class="text-3xl font-bold" style="background:linear-gradient(135deg,#a78bfa,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">5</p>
+          <p class="text-sm text-slate-400 mt-1">Genres</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════ CURRENTLY READING ══════════════════ -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal mb-10">
+        <div class="section-badge"><i class="fas fa-book-reader"></i> In Progress</div>
+        <h2 class="text-3xl sm:text-4xl font-bold">Currently <span class="grad-text">Reading</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Book 1 -->
+        <div class="glass-card rounded-2xl p-6 reveal">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="reading-now-ring flex-shrink-0">
+              <div class="w-14 h-14 rounded-xl bg-indigo-900/60 flex items-center justify-center">
+                <i class="fas fa-book text-indigo-300 text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-tech mb-2">Technology</span>
+              <h3 class="font-bold text-base leading-snug">The Pragmatic Programmer</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Andrew Hunt &amp; David Thomas</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Timeless software craftsmanship principles that transform how you think about code, careers, and continuous improvement.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-circle-notch fa-spin text-indigo-400 text-xs"></i>
+            <span class="text-xs text-indigo-400 font-semibold">Reading now</span>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-1">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="reading-now-ring flex-shrink-0">
+              <div class="w-14 h-14 rounded-xl bg-blue-900/60 flex items-center justify-center">
+                <i class="fas fa-book text-blue-300 text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-biz mb-2">Leadership</span>
+              <h3 class="font-bold text-base leading-snug">The Lean Startup</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Eric Ries</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            A methodology for building businesses and products through validated learning, rapid experimentation, and iterative release cycles.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-circle-notch fa-spin text-blue-400 text-xs"></i>
+            <span class="text-xs text-blue-400 font-semibold">Reading now</span>
+          </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-2">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="reading-now-ring flex-shrink-0">
+              <div class="w-14 h-14 rounded-xl bg-amber-900/60 flex items-center justify-center">
+                <i class="fas fa-book text-amber-300 text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-finance mb-2">Finance</span>
+              <h3 class="font-bold text-base leading-snug">The Psychology of Money</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Morgan Housel</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Explores the strange ways people think about money and how behavioral biases shape long-term financial outcomes more than knowledge does.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-circle-notch fa-spin text-amber-400 text-xs"></i>
+            <span class="text-xs text-amber-400 font-semibold">Reading now</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════ PAST READING ══════════════════ -->
+  <section class="py-20 section-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal mb-10">
+        <div class="section-badge"><i class="fas fa-bookmark"></i> Completed</div>
+        <h2 class="text-3xl sm:text-4xl font-bold">Past <span class="grad-text">Reading</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Past Book 1 -->
+        <div class="glass-card rounded-2xl p-6 reveal">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-emerald-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-emerald-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-tech mb-2">Technology</span>
+              <h3 class="font-bold text-base leading-snug">Designing Data-Intensive Applications</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Martin Kleppmann</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            A deep dive into the principles behind reliable, scalable, and maintainable distributed systems — essential reading for any engineer.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+        <!-- Past Book 2 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-1">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-purple-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-purple-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-history mb-2">History</span>
+              <h3 class="font-bold text-base leading-snug">Sapiens: A Brief History of Humankind</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Yuval Noah Harari</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            A sweeping narrative of how Homo sapiens came to dominate Earth through cognitive, agricultural, and scientific revolutions.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+        <!-- Past Book 3 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-2">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-blue-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-blue-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-biz mb-2">Leadership</span>
+              <h3 class="font-bold text-base leading-snug">An Elegant Puzzle: Systems of Engineering Management</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Will Larson</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Practical frameworks for engineering managers on team sizing, org design, hiring, and navigating complex systems in fast-growing companies.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+        <!-- Past Book 4 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-3">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-amber-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-amber-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-finance mb-2">Finance</span>
+              <h3 class="font-bold text-base leading-snug">Rich Dad Poor Dad</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Robert T. Kiyosaki</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Contrasting money lessons from two father figures that reshape the way you think about assets, liabilities, and financial independence.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+        <!-- Past Book 5 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-4">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-pink-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-pink-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-fiction mb-2">Fiction</span>
+              <h3 class="font-bold text-base leading-snug">The Alchemist</h3>
+              <p class="text-sm text-slate-400 mt-0.5">Paulo Coelho</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            A fable about following your dreams and listening to your heart — an inspiring journey of self-discovery and personal legend.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+        <!-- Past Book 6 -->
+        <div class="glass-card rounded-2xl p-6 reveal delay-5">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-14 h-14 rounded-xl bg-teal-900/60 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-book text-teal-300 text-2xl"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="genre-badge genre-self mb-2">Self-Help</span>
+              <h3 class="font-bold text-base leading-snug">Atomic Habits</h3>
+              <p class="text-sm text-slate-400 mt-0.5">James Clear</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            A proven framework for building good habits and breaking bad ones through tiny changes that compound into remarkable results over time.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-400 text-xs"></i>
+            <span class="text-xs text-emerald-400 font-semibold">Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- BACK TO PROFILE CTA -->
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center reveal">
+      <div class="inline-block mb-6 p-4 rounded-2xl bg-indigo-900/30 border border-indigo-500/20">
+        <i class="fas fa-user text-indigo-400 text-2xl"></i>
+      </div>
+      <h2 class="text-3xl font-bold mb-4">Want to know more about me?</h2>
+      <p class="text-slate-400 mb-8">Head back to the full profile to explore my journey, projects, and contributions.</p>
+      <a href="Index.html" class="btn-primary gap-2">
+        <i class="fas fa-arrow-left"></i> Back to Profile
+      </a>
+    </div>
+  </section>
+
+  <footer class="py-8 border-t border-slate-900 text-center text-sm text-slate-600">
+    © 2025 Sudhakar Shenoy · Built with passion
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
