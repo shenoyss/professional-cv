@@ -124,28 +124,29 @@
       aspect-ratio: 4 / 3;
       background: rgba(11,25,41,0.8);
       border-radius: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
       border: 1.5px dashed rgba(99,149,255,0.2);
       overflow: hidden;
       position: relative;
     }
     .photo-placeholder img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 0.75rem;
-      position: absolute;
-      inset: 0;
+      object-position: center;
+      display: block;
+      z-index: 1;
     }
     .photo-placeholder-inner {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      z-index: 0;
     }
 
     /* Type badges */
@@ -225,22 +226,6 @@
       <p class="text-lg text-slate-400 max-w-2xl mx-auto reveal delay-2">
         Every destination is a new perspective — exploring the world one journey at a time.
       </p>
-      <div class="flex flex-wrap justify-center gap-8 mt-10 reveal delay-3">
-        <div class="text-center">
-          <p class="text-3xl font-bold grad-text">5</p>
-          <p class="text-sm text-slate-400 mt-1">International</p>
-        </div>
-        <div class="w-px bg-slate-800 self-stretch"></div>
-        <div class="text-center">
-          <p class="text-3xl font-bold grad-text">6</p>
-          <p class="text-sm text-slate-400 mt-1">Domestic</p>
-        </div>
-        <div class="w-px bg-slate-800 self-stretch"></div>
-        <div class="text-center">
-          <p class="text-3xl font-bold" style="background:linear-gradient(135deg,#38bdf8,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">11</p>
-          <p class="text-sm text-slate-400 mt-1">Total Destinations</p>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -270,7 +255,7 @@
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
               <!-- Replace src below with your actual photo path, e.g. src="photos/singapore.jpg" -->
-              <!-- <img src="" alt="Singapore"> -->
+              <img src="photos/singapore.jpg" alt="Singapore"> 
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -291,11 +276,11 @@
           </div>
         </div>
 
-        <!-- ── Destination 2: Dubai ── -->
-        <div class="glass-card rounded-2xl overflow-hidden reveal delay-1" data-geo="international" data-companion="family">
+        <!-- ── Destination 2: Sydney ── -->
+        <div class="glass-card rounded-2xl overflow-hidden reveal delay-1" data-geo="international" data-companion="solo">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Dubai"> -->
+              <img src="photos/sydney.JPEG" alt="Sydney">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -304,23 +289,23 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Dubai</h3>
+              <h3 class="font-bold text-lg leading-tight">Sydney</h3>
               <i class="fas fa-location-dot text-sky-400 mt-0.5 flex-shrink-0"></i>
             </div>
-            <p class="text-xs text-slate-500 mb-3">UAE, Middle East</p>
+            <p class="text-xs text-slate-500 mb-3">Australia</p>
             <div class="flex flex-wrap gap-1.5 mb-3">
               <span class="dest-badge badge-intl"><i class="fas fa-globe"></i> International</span>
-              <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
+              <span class="dest-badge badge-solo"><i class="fas fa-user"></i> Solo</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">Where the desert meets ambition — a city of record-breaking skyscrapers, desert safaris, and world-class luxury experiences.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Land down-under. Australian Open 2026. Melbourne, Sydney</p>
           </div>
         </div>
 
-        <!-- ── Destination 3: Bangkok ── -->
-        <div class="glass-card rounded-2xl overflow-hidden reveal delay-2" data-geo="international" data-companion="friends">
+        <!-- ── Destination 3: Mussourie ── -->
+        <div class="glass-card rounded-2xl overflow-hidden reveal delay-2" data-geo="domestic" data-companion="friends">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Bangkok"> -->
+              <img src="photos/mussourie.jpeg" alt="Mussourie">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -329,23 +314,23 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Bangkok</h3>
-              <i class="fas fa-location-dot text-sky-400 mt-0.5 flex-shrink-0"></i>
+              <h3 class="font-bold text-lg leading-tight">Mussourie & Rishikesh</h3>
+              <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
             </div>
-            <p class="text-xs text-slate-500 mb-3">Thailand, Southeast Asia</p>
+            <p class="text-xs text-slate-500 mb-3">Uttarakhand, India</p>
             <div class="flex flex-wrap gap-1.5 mb-3">
-              <span class="dest-badge badge-intl"><i class="fas fa-globe"></i> International</span>
+              <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
               <span class="dest-badge badge-friends"><i class="fas fa-user-group"></i> Friends</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">A chaotic, vibrant capital buzzing with ornate temples, night markets, and some of the most flavourful food on the planet.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Queen of Hills - Mussourie, Landor , Rishikesh in Summer of 2026</p>
           </div>
         </div>
 
-        <!-- ── Destination 4: Bali ── -->
+        <!-- ── Destination 4: Paris ── -->
         <div class="glass-card rounded-2xl overflow-hidden reveal delay-3" data-geo="international" data-companion="family">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Bali"> -->
+              <img src="photos/paris.jpg" alt="Paris">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -354,23 +339,23 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Bali</h3>
+              <h3 class="font-bold text-lg leading-tight">Paris</h3>
               <i class="fas fa-location-dot text-sky-400 mt-0.5 flex-shrink-0"></i>
             </div>
-            <p class="text-xs text-slate-500 mb-3">Indonesia, Southeast Asia</p>
+            <p class="text-xs text-slate-500 mb-3">France, Europe</p>
             <div class="flex flex-wrap gap-1.5 mb-3">
               <span class="dest-badge badge-intl"><i class="fas fa-globe"></i> International</span>
               <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">The island of gods — terraced rice paddies, sacred temples, surf-worthy beaches, and a culture that slows everything down beautifully.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Disneyland, Paris, Eiffle Tower, Louvre , PSG Stadium</p>
           </div>
         </div>
 
-        <!-- ── Destination 5: Colombo ── -->
+        <!-- ── Destination 5: Switzerland ── -->
         <div class="glass-card rounded-2xl overflow-hidden reveal delay-4" data-geo="international" data-companion="family">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Colombo"> -->
+              <img src="photos/swiss.jpg" alt="Switzerland">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -379,73 +364,23 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Colombo</h3>
+              <h3 class="font-bold text-lg leading-tight">Switzerland</h3>
               <i class="fas fa-location-dot text-sky-400 mt-0.5 flex-shrink-0"></i>
             </div>
-            <p class="text-xs text-slate-500 mb-3">Sri Lanka, South Asia</p>
+            <p class="text-xs text-slate-500 mb-3">Europe</p>
             <div class="flex flex-wrap gap-1.5 mb-3">
               <span class="dest-badge badge-intl"><i class="fas fa-globe"></i> International</span>
               <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">A warm, colonial port city blending Dutch and British heritage with Sri Lankan warmth, spice markets, and coastal charm.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Europe's Jewel, Interlaken, Lucern,Zurich, Rhine Falls</p>
           </div>
         </div>
 
-        <!-- ── Destination 6: Goa ── -->
-        <div class="glass-card rounded-2xl overflow-hidden reveal delay-5" data-geo="domestic" data-companion="friends">
+        <!-- ── Destination 6: Kerala ── -->
+        <div class="glass-card rounded-2xl overflow-hidden reveal delay-5" data-geo="domestic" data-companion="family">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Goa"> -->
-              <div class="photo-placeholder-inner">
-                <i class="fas fa-camera text-slate-600 text-2xl"></i>
-                <span class="text-xs text-slate-600 font-medium">Add Photo</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 pt-3">
-            <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Goa</h3>
-              <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
-            </div>
-            <p class="text-xs text-slate-500 mb-3">India · Domestic</p>
-            <div class="flex flex-wrap gap-1.5 mb-3">
-              <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
-              <span class="dest-badge badge-friends"><i class="fas fa-user-group"></i> Friends</span>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed">Sun, sand, and Portuguese vibes — India's favourite beach destination where laid-back culture meets vibrant nightlife.</p>
-          </div>
-        </div>
-
-        <!-- ── Destination 7: Ladakh ── -->
-        <div class="glass-card rounded-2xl overflow-hidden reveal" data-geo="domestic" data-companion="friends">
-          <div class="p-5 pb-0">
-            <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Ladakh"> -->
-              <div class="photo-placeholder-inner">
-                <i class="fas fa-camera text-slate-600 text-2xl"></i>
-                <span class="text-xs text-slate-600 font-medium">Add Photo</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 pt-3">
-            <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Ladakh</h3>
-              <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
-            </div>
-            <p class="text-xs text-slate-500 mb-3">India · Domestic</p>
-            <div class="flex flex-wrap gap-1.5 mb-3">
-              <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
-              <span class="dest-badge badge-friends"><i class="fas fa-user-group"></i> Friends</span>
-            </div>
-            <p class="text-sm text-slate-400 leading-relaxed">High-altitude desert landscapes, ancient monasteries, and star-filled skies — a road trip that redefines your sense of scale.</p>
-          </div>
-        </div>
-
-        <!-- ── Destination 8: Kerala ── -->
-        <div class="glass-card rounded-2xl overflow-hidden reveal delay-1" data-geo="domestic" data-companion="family">
-          <div class="p-5 pb-0">
-            <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Kerala"> -->
+              <img src="photos/kerala.jpg" alt="Kerala">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -462,15 +397,65 @@
               <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
               <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">Backwaters, spice plantations, and Ayurvedic retreats — God's Own Country lives up to every word of its name.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">God's own Country. Munnar, Thekadi, Allepey, Kovalam, Kumarakom</p>
           </div>
         </div>
 
-        <!-- ── Destination 9: Rajasthan ── -->
+        <!-- ── Destination 7: Aurangabad ── -->
+        <div class="glass-card rounded-2xl overflow-hidden reveal" data-geo="domestic" data-companion="family">
+          <div class="p-5 pb-0">
+            <div class="photo-placeholder mb-4">
+              <img src="photos/aurangabad.jpg" alt="Aurangabad">
+              <div class="photo-placeholder-inner">
+                <i class="fas fa-camera text-slate-600 text-2xl"></i>
+                <span class="text-xs text-slate-600 font-medium">Add Photo</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-3">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="font-bold text-lg leading-tight">Aurangabad</h3>
+              <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">India · Domestic</p>
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
+              <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed">Ajanta Caves, Elora Caves,Bibi Ka Makbara, Daulatabad Fort, Jayakwadi Dam</p>
+          </div>
+        </div>
+
+        <!-- ── Destination 8: Japan ── -->
+        <div class="glass-card rounded-2xl overflow-hidden reveal delay-1" data-geo="international" data-companion="family">
+          <div class="p-5 pb-0">
+            <div class="photo-placeholder mb-4">
+              <img src="photos/japan.jpg" alt="Japan">
+              <div class="photo-placeholder-inner">
+                <i class="fas fa-camera text-slate-600 text-2xl"></i>
+                <span class="text-xs text-slate-600 font-medium">Add Photo</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-3">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="font-bold text-lg leading-tight">Tokyo</h3>
+              <i class="fas fa-location-dot text-sky-400 mt-0.5 flex-shrink-0"></i>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">Japan · Asia</p>
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="dest-badge badge-intl"><i class="fas fa-globe"></i> International</span>
+              <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed">Land of the Rising Sun. Tokyo Tower. Team Labs Planets. Hiroshima. Kyoto. Osaka.</p>
+          </div>
+        </div>
+
+        <!-- ── Destination 9: Sikkim ── -->
         <div class="glass-card rounded-2xl overflow-hidden reveal delay-2" data-geo="domestic" data-companion="family">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Rajasthan"> -->
+              <img src="photos/sikkim.jpg" alt="Sikkim">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -479,7 +464,7 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Rajasthan</h3>
+              <h3 class="font-bold text-lg leading-tight">Sikkim</h3>
               <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
             </div>
             <p class="text-xs text-slate-500 mb-3">India · Domestic</p>
@@ -487,15 +472,15 @@
               <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
               <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">The land of maharajas — grand forts, camel dunes, colourful bazaars, and a royal heritage that feels utterly cinematic.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Trip to the North East. Darjeeling, Gangtok, Nathu La Pass</p>
           </div>
         </div>
 
-        <!-- ── Destination 10: Coorg ── -->
+        <!-- ── Destination 10: Amritsar ── -->
         <div class="glass-card rounded-2xl overflow-hidden reveal delay-3" data-geo="domestic" data-companion="family">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Coorg"> -->
+              <img src="photos/Amritsar.jpg" alt="Amritsar">
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -504,7 +489,7 @@
           </div>
           <div class="p-5 pt-3">
             <div class="flex items-start justify-between gap-3 mb-2">
-              <h3 class="font-bold text-lg leading-tight">Coorg</h3>
+              <h3 class="font-bold text-lg leading-tight">Amritsar</h3>
               <i class="fas fa-location-dot text-emerald-400 mt-0.5 flex-shrink-0"></i>
             </div>
             <p class="text-xs text-slate-500 mb-3">India · Domestic</p>
@@ -512,15 +497,15 @@
               <span class="dest-badge badge-dom"><i class="fas fa-flag"></i> Domestic</span>
               <span class="dest-badge badge-family"><i class="fas fa-users"></i> Family</span>
             </div>
-            <p class="text-sm text-slate-400 leading-relaxed">Misty hills blanketed in coffee and spice estates — the Scotland of India is a perfect weekend escape from the city.</p>
+            <p class="text-sm text-slate-400 leading-relaxed">Holy city for the Sikhs. Golden Temple. Wagah Atari Border.</p>
           </div>
         </div>
 
-        <!-- ── Destination 11: Hampi ── -->
+        <!-- ── Destination 11: Hampi ── 
         <div class="glass-card rounded-2xl overflow-hidden reveal delay-4" data-geo="domestic" data-companion="friends">
           <div class="p-5 pb-0">
             <div class="photo-placeholder mb-4">
-              <!-- <img src="" alt="Hampi"> -->
+              <!-- <img src="" alt="Hampi"> 
               <div class="photo-placeholder-inner">
                 <i class="fas fa-camera text-slate-600 text-2xl"></i>
                 <span class="text-xs text-slate-600 font-medium">Add Photo</span>
@@ -539,7 +524,7 @@
             </div>
             <p class="text-sm text-slate-400 leading-relaxed">A UNESCO World Heritage landscape of boulder-strewn ruins and ancient temples — the once-glorious capital of the Vijayanagara Empire.</p>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
