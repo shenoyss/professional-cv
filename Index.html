@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
   <title>Sudhakar Shenoy | Director of Engineering</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="theme.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -283,6 +285,23 @@
       transition: color 0.2s;
     }
     .mob-nav-link:hover { color: #fff; }
+
+    /* ── Light mode: Index-specific overrides ── */
+    [data-theme="light"] .hero-section {
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 50%, rgba(59,130,246,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 50% at 85% 30%, rgba(99,102,241,0.08) 0%, transparent 60%),
+        var(--bg-base);
+    }
+    [data-theme="light"] .timeline-dot { border-color: var(--bg-base); }
+    [data-theme="light"] .contact-card {
+      background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(79,70,229,0.06));
+      border-color: rgba(99,149,255,0.2);
+    }
+    [data-theme="light"] .photo-ring {
+      box-shadow: 0 0 0 4px #f1f5f9, 0 0 0 7px rgba(99,102,241,0.35), 0 0 24px rgba(99,102,241,0.12);
+    }
+    [data-theme="light"] .mob-nav-link:hover { color: #0f172a; }
   </style>
 </head>
 <body>
@@ -302,9 +321,14 @@
         <a href="#contributions" class="nav-link">Contributions</a>
         <a href="#contact" class="btn-primary" style="padding:0.5rem 1.4rem; font-size:0.85rem;">Let's Talk</a>
       </div>
-      <button class="md:hidden text-slate-400 hover:text-white transition" id="mob-menu-btn">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
+        <button class="md:hidden text-slate-400 hover:text-white transition" id="mob-menu-btn">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
     </div>
     <!-- Mobile dropdown menu -->
     <div id="mob-menu" class="hidden md:hidden" style="border-top:1px solid rgba(99,149,255,0.12);">
@@ -1062,6 +1086,21 @@
       sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
       navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#' + current ? '#fff' : ''; });
     }, { passive: true });
+
+    // Theme toggle
+    (function() {
+      const tBtn = document.getElementById('theme-toggle');
+      const tIcon = document.getElementById('theme-icon');
+      function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        localStorage.setItem('theme', t);
+        if (tIcon) tIcon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+      applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+      if (tBtn) tBtn.addEventListener('click', () => {
+        applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    })();
 
     // Mobile hamburger menu
     const mobBtn = document.getElementById('mob-menu-btn');

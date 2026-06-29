@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
   <title>Reading List | Sudhakar Shenoy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="theme.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -177,6 +179,15 @@
     }
 
     .section-alt { background: rgba(11,25,41,0.5); }
+
+    /* ── Light mode: Books-specific overrides ── */
+    [data-theme="light"] .hero-books {
+      background:
+        radial-gradient(ellipse 60% 60% at 20% 50%, rgba(99,102,241,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(59,130,246,0.08) 0%, transparent 60%),
+        var(--bg-base);
+    }
+    [data-theme="light"] .reading-now-ring::after { opacity: 0.2; }
   </style>
 </head>
 <body>
@@ -188,8 +199,11 @@
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">SS</div>
         <span class="font-bold text-lg tracking-tight hidden md:inline">Sudhakar Shenoy</span>
       </a>
-      <div class="flex items-center gap-2 md:gap-6">
+      <div class="flex items-center gap-2 md:gap-4">
         <a href="Index.html" class="nav-link"><i class="fas fa-arrow-left mr-1.5"></i>Back to Profile</a>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
         <a href="Index.html#contact" class="btn-primary" style="padding:0.5rem 1rem; font-size:0.82rem;">Let's Talk</a>
       </div>
     </div>
@@ -409,6 +423,21 @@
   </footer>
 
   <script>
+    // Theme toggle
+    (function() {
+      const tBtn = document.getElementById('theme-toggle');
+      const tIcon = document.getElementById('theme-icon');
+      function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        localStorage.setItem('theme', t);
+        if (tIcon) tIcon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+      applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+      if (tBtn) tBtn.addEventListener('click', () => {
+        applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    })();
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });

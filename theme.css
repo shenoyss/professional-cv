@@ -1,0 +1,126 @@
+/* ═══════════════════════════════════════════════
+   THEME SYSTEM — dark (default) + light override
+   ═══════════════════════════════════════════════ */
+
+/* ── Dark theme variables (default) ── */
+:root {
+  --bg-base:     #030d1a;
+  --bg-surface:  #0b1929;
+  --bg-card:     #0e2038;
+  --bg-card-alt: #112340;
+  --blue-bright: #3b82f6;
+  --blue-glow:   #60a5fa;
+  --indigo:      #6366f1;
+  --emerald:     #10b981;
+  --amber:       #f59e0b;
+  --text-pri:    #e2eaf4;
+  --text-sec:    #8faac4;
+  --text-muted:  #4d6480;
+  --border:      rgba(99,149,255,0.12);
+}
+
+/* ── Light theme variable overrides ── */
+[data-theme="light"] {
+  --bg-base:     #f8fafc;
+  --bg-surface:  #f1f5f9;
+  --bg-card:     #ffffff;
+  --bg-card-alt: #f8fafc;
+  --text-pri:    #0f172a;
+  --text-sec:    #4b6080;
+  --text-muted:  #94a3b8;
+  --border:      rgba(99,149,255,0.2);
+}
+
+/* ── Shared component overrides for light mode ── */
+
+[data-theme="light"] body::before { opacity: 0.07; }
+
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #94a3b8; }
+
+[data-theme="light"] .nav-glass {
+  background: rgba(248,250,252,0.88);
+  border-bottom-color: rgba(99,149,255,0.15);
+}
+
+[data-theme="light"] .nav-link { color: var(--text-sec); }
+[data-theme="light"] .nav-link:hover { color: #0f172a; }
+[data-theme="light"] .mob-nav-link:hover { color: #0f172a; }
+
+[data-theme="light"] .glass-card {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 2px 12px rgba(15,23,42,0.07);
+}
+[data-theme="light"] .glass-card:hover {
+  box-shadow: 0 10px 36px rgba(15,23,42,0.12);
+  border-color: rgba(99,149,255,0.3);
+}
+
+[data-theme="light"] .stat-card {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+}
+[data-theme="light"] .stat-card:hover {
+  box-shadow: 0 0 24px rgba(59,130,246,0.12);
+}
+
+[data-theme="light"] .skill-cat {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+}
+
+[data-theme="light"] .section-alt { background: #f1f5f9; }
+
+[data-theme="light"] .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(99,149,255,0.25), transparent);
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: rgba(15,23,42,0.2);
+  color: var(--text-pri);
+  background: rgba(15,23,42,0.03);
+}
+[data-theme="light"] .btn-outline:hover {
+  border-color: rgba(15,23,42,0.4);
+  background: rgba(15,23,42,0.07);
+}
+
+[data-theme="light"] .tech-badge {
+  background: rgba(37,99,235,0.08);
+  border-color: rgba(37,99,235,0.22);
+  color: #2563eb;
+}
+
+[data-theme="light"] .progress-track { background: rgba(15,23,42,0.08); }
+
+[data-theme="light"] .section-badge {
+  background: rgba(59,130,246,0.08);
+  border-color: rgba(59,130,246,0.2);
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-sec);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle-btn:hover {
+  color: var(--text-pri);
+  background: rgba(99,149,255,0.1);
+  border-color: rgba(99,149,255,0.3);
+}
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(37,99,235,0.08);
+  border-color: rgba(37,99,235,0.3);
+}
